@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catálogo Tipográfico</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo" id="toggle-menu">CT</div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Serif</a></li>
+        <li><a href="#">San-Serif</a></li>
+        <li><a href="#">Tips de uso</a></li>
+        <li><a href="#">Sobre el Proyecto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <aside class="sidebar" id="sidebar">
+    <ul>
+      <li><a href="#">Catálogo Impreso</a></li>
+      <li><a href="#">Historia</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+  </aside>
+
+  <script>
+    const toggleButton = document.getElementById('toggle-menu');
+    const sidebar = document.getElementById('sidebar');
+
+    toggleButton.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
