@@ -109,3 +109,33 @@ nav ul li a:hover {
 .sidebar.active {
   transform: translateX(0);
 }
+
+.hidden {
+  display: none !important;
+}
+
+main {
+  height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid {
+  height: 100%;
+  width: 100%;
+  max-width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+}
+
+.font-box {
+  background-color: #46493d;
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+}

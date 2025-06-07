@@ -28,13 +28,44 @@
     </ul>
   </aside>
 
-  <script>
-    const toggleButton = document.getElementById('toggle-menu');
-    const sidebar = document.getElementById('sidebar');
+  <main>
+  <section id="font-grid" class="grid hidden">
+    <div class="font-box"></div>
+    <div class="font-box"></div>
+    <div class="font-box"></div>
+    <div class="font-box"></div>
+    <div class="font-box"></div>
+    <div class="font-box"></div>
+    <div class="font-box"></div>
+    <div class="font-box"></div>
+  </section>
+</main>
 
-    toggleButton.addEventListener('click', () => {
-      sidebar.classList.toggle('active');
+  <script>
+  const toggleButton = document.getElementById('toggle-menu');
+  const sidebar = document.getElementById('sidebar');
+  const grid = document.getElementById('font-grid');
+
+  toggleButton.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+  });
+
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const label = link.textContent.trim();
+
+      if (label === "Serif" || label === "San-Serif") {
+        grid.classList.remove('hidden');
+      } else if (
+        label === "Home" ||
+        label === "Tips de uso" ||
+        label === "Sobre el Proyecto"
+      ) {
+        grid.classList.add('hidden');
+      }
     });
-  </script>
+  });
+</script>
 </body>
 </html>
