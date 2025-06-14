@@ -7,10 +7,13 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- This is the navigation bar at the top -->
   <header class="navbar">
+    <!-- This is a logo that also acts as a toggle button for another sidebar on the left -->
     <div class="logo" id="toggle-menu">CT</div>
     <nav>
       <ul>
+        <!-- The main navigation links for the sidebar -->
         <li><a href="#">Home</a></li>
         <li><a href="#">Serif</a></li>
         <li><a href="#">San-Serif</a></li>
@@ -20,6 +23,7 @@
     </nav>
   </header>
 
+  <!-- The hidden sidebar menu that appears when "CT" is clicked. Aside is great for this -->
   <aside class="sidebar" id="sidebar">
     <ul>
       <li><a href="#">Catálogo Impreso</a></li>
@@ -30,40 +34,68 @@
 
   <main>
   <section id="font-grid" class="grid hidden">
+    <!-- This grid holds 8 hidden green font boxes that appear when Serif or San-Serif is clicked -->
+    <!-- The ones labeled selectable also change color when clicked -->
     <div class="font-box"></div>
+    <div class="font-box active-box"></div>
     <div class="font-box"></div>
+    <div class="font-box active-box"></div>
     <div class="font-box"></div>
+    <div class="font-box active-box"></div>
     <div class="font-box"></div>
-    <div class="font-box"></div>
-    <div class="font-box"></div>
-    <div class="font-box"></div>
-    <div class="font-box"></div>
+    <div class="font-box active-box"></div>
   </section>
 </main>
 
-  <script>
+<!-- This is the JavaScript section that controls interactivity -->
+<script>
   const toggleButton = document.getElementById('toggle-menu');
   const sidebar = document.getElementById('sidebar');
   const grid = document.getElementById('font-grid');
 
+  // This is what toggles the sideabar and makes it visible whenever "CT" is clicked
   toggleButton.addEventListener('click', () => {
     sidebar.classList.toggle('active');
   });
 
+  // This is what handles the links being clicked
   document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', (e) => {
+      // This prevents the link from refreshing the page
       e.preventDefault();
+      // This gets the text of the link
       const label = link.textContent.trim();
 
+      // It reads the text that label contains to determine if the user clicked "Serif" or "San-Serif" and if it did, it shows the boxes
       if (label === "Serif" || label === "San-Serif") {
         grid.classList.remove('hidden');
-      } else if (
+      } 
+      // It hides thefont boxes on other nav links
+      else if (
         label === "Home" ||
         label === "Tips de uso" ||
         label === "Sobre el Proyecto"
       ) {
         grid.classList.add('hidden');
       }
+    });
+  });
+
+  const clickableBoxes = document.querySelectorAll('.font-box');
+  
+  clickableBoxes.forEach(box => {
+    box.addEventListener('click', () => {
+      const isActive = box.classList.contains('active-box');
+      const color = isActive ? '#882434' : '#505444';
+      
+      // Change navbar and sidebar
+      document.querySelector('.navbar').style.backgroundColor = color;
+      document.querySelector('.sidebar').style.backgroundColor = color;
+      
+      // Change all font boxes
+      document.querySelectorAll('.font-box').forEach(b => {
+        b.style.backgroundColor = color;
+      });
     });
   });
 </script>
