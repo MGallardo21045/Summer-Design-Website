@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Catálogo Tipográfico</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bona+Nova&family=Corben&family=DM+Sans&family=Lora&family=Manrope&family=Montserrat&family=Outfit&family=Playfair+Display&family=Poppins&family=Plus+Jakarta+Sans&family=Quicksand&family=Sora&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- This is the navigation bar at the top -->
@@ -33,17 +34,78 @@
   </aside>
 
   <main>
-  <section id="font-grid" class="grid hidden">
     <!-- This grid holds 8 hidden green font boxes that appear when Serif or San-Serif is clicked -->
     <!-- The ones labeled selectable also change color when clicked -->
-    <div class="font-box"></div>
-    <div class="font-box active-box"></div>
-    <div class="font-box"></div>
-    <div class="font-box active-box"></div>
-    <div class="font-box"></div>
-    <div class="font-box active-box"></div>
-    <div class="font-box"></div>
-    <div class="font-box active-box"></div>
+    <!-- This is exclusive for the Serif font boxes -->
+  <section id="serif-grid" class="grid hidden">
+    <div class="font-box" style="font-family: 'Corben', serif;">
+      <div class="font-initials">Co</div>
+      <div class="font-name">Corben</div>
+    </div>
+    <div class="font-box active-box" style="font-family: 'Reforma', serif;">
+      <div class="font-initials">Rf</div>
+      <div class="font-name">Reforma</div>
+    </div>
+    <div class="font-box" style="font-family: 'Playfair Display', serif;">
+      <div class="font-initials">Pd</div>
+      <div class="font-name">Playfair</div>
+    </div>
+    <div class="font-box active-box" style="font-family: 'Tiempos', serif;">
+      <div class="font-initials">Tp</div>
+      <div class="font-name">Tiempos</div>
+    </div>
+    <div class="font-box" style="font-family: 'Lora', serif;">
+      <div class="font-initials">La</div>
+      <div class="font-name">Lora</div>
+    </div>
+    <div class="font-box active-box" style="font-family: 'Garamond', serif;">
+      <div class="font-initials">Gd</div>
+      <div class="font-name">Garamond</div>
+    </div>
+    <div class="font-box" style="font-family: 'Freight', serif;">
+      <div class="font-initials">Bf</div>
+      <div class="font-name">Freight</div>
+    </div>
+    <div class="font-box active-box" style="font-family: 'Bona Nova', serif;">
+      <div class="font-initials">Nb</div>
+      <div class="font-name">Bona Nova</div>
+    </div>
+  </section>
+
+  <!-- And this one is exclusive for the Sans-Serif Fonts -->
+  <section id="sanserif-grid" class="grid hidden">
+    <div class="font-box" style="font-family: 'Montserrat', sans-serif;">
+      <div class="font-initials">Mt</div>
+      <div class="font-name">Montserrat</div>
+    </div>
+    <div class="font-box active-box" style="font-family: 'DM Sans', sans-serif;">
+      <div class="font-initials">Dm</div>
+      <div class="font-name">Dm Sans</div>
+    </div>
+    <div class="font-box" style="font-family: 'Outfit', sans-serif;">
+      <div class="font-initials">Ot</div>
+      <div class="font-name">Outfit</div>
+    </div>
+    <div class="font-box active-box" style="font-family: 'Quicksand', sans-serif;">
+      <div class="font-initials">Qk</div>
+      <div class="font-name">Quicksand</div>
+    </div>
+    <div class="font-box" style="font-family: 'Manrope', sans-serif;">
+      <div class="font-initials">Mr</div>
+      <div class="font-name">Manrope</div>
+    </div>
+    <div class="font-box active-box" style="font-family: 'Poppins', sans-serif;">
+      <div class="font-initials">Pp</div>
+      <div class="font-name">Poppins</div>
+    </div>
+    <div class="font-box" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+      <div class="font-initials">Pk</div>
+      <div class="font-name">Plus Jakarta</div>
+    </div>
+    <div class="font-box active-box" style="font-family: 'Sora', sans-serif;">
+      <div class="font-initials">Sa</div>
+      <div class="font-name">Sora</div>
+    </div>
   </section>
 </main>
 
@@ -51,7 +113,8 @@
 <script>
   const toggleButton = document.getElementById('toggle-menu');
   const sidebar = document.getElementById('sidebar');
-  const grid = document.getElementById('font-grid');
+  const serifGrid = document.getElementById('serif-grid');
+  const sanserifGrid = document.getElementById('sanserif-grid');
 
   // This is what toggles the sideabar and makes it visible whenever "CT" is clicked
   toggleButton.addEventListener('click', () => {
@@ -66,18 +129,30 @@
       // This gets the text of the link
       const label = link.textContent.trim();
 
+      // Make sure both grids are hidden
+      serifGrid.classList.add('hidden');
+      sanserifGrid.classList.add('hidden');
+
       // It reads the text that label contains to determine if the user clicked "Serif" or "San-Serif" and if it did, it shows the boxes
-      if (label === "Serif" || label === "San-Serif") {
-        grid.classList.remove('hidden');
-      } 
+       if (label === "Serif") {
+        serifGrid.classList.remove('hidden');
+      } else if (label === "San-Serif") {
+        sanserifGrid.classList.remove('hidden');
+      }
       // It hides thefont boxes on other nav links
       else if (
         label === "Home" ||
         label === "Tips de uso" ||
         label === "Sobre el Proyecto"
       ) {
-        grid.classList.add('hidden');
+        sanserifGrid.classList.add('hidden');
+        serifGrid.classList.add('hidden');
       }
+      document.querySelector('.navbar').style.backgroundColor = '#6e7359';
+      document.querySelector('.sidebar').style.backgroundColor = '#6e7359';
+      document.querySelectorAll('.font-box').forEach(b => {
+        b.style.backgroundColor = '#46493d';
+      });
     });
   });
 
