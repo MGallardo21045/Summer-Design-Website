@@ -196,3 +196,67 @@ body {
   font-family: 'Garamond';
   src: url('./fonts/Garamond.ttf') format('truetype');
 }
+
+.font-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(30, 30, 30, 0.5);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+}
+
+.font-modal-content {
+  background-color: #eaf0db;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 800px;
+  display: flex;
+  gap: 2rem;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.modal-text {
+  flex: 1;
+  font-family: 'Corben', serif;
+}
+
+.modal-preview {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Corben', serif;
+}
+
+.modal-preview #fontInitials {
+  font-size: 6rem;
+  font-weight: normal;
+  margin-bottom: 1rem;
+}
+
+.alphabet {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
