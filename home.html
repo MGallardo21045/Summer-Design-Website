@@ -137,10 +137,12 @@
 
   const fontKeyMap = {
     "Garamond": "EB Garamond",
-    "Freight": "Freight Big Pro"
+    "Freight": "Freight Big Pro",
+    "Playfair": "Playfair Display",
+    "Bona Nova": "Bona Nova SC"
   };
-
-    const fontInfo = {
+  
+  const fontInfo = {
     "Corben": {
       designer: "Ed Benguiat",
       description: "La tipografía Corben fue creada por Ed Benguiat, un reconocido diseñador de tipografías estadounidenses. Ed Benguiat es famoso por haber trabajado en una amplia gama de fuentes populares a lo largo de su carrera. Corben es una tipografía de estilo display con una estética retro y bold, que se lanzó en 1973 y rápidamente se convirtió en un clásico del diseño gráfico."
@@ -157,7 +159,7 @@
       designer: "Colophon Foundry",
       description: "DM Sans es una tipografía de código abierto diseñada por Colophon Foundry. Su diseño está basado en la idea de combinar funcionalidad y estética, ofreciendo un estilo sencillo y moderno que es altamente legible. Se utiliza en proyectos digitales, especialmente en interfaces de usuario y en branding."
     },
-    "Playfair": {
+    "Playfair Display": {
       designer: "Claus Eggers Sørensen",
       description: "Desarrollada por Claus Eggers Sørensen, Playfair Display se inspira en los tipos de letra de transición del siglo XVIII, cuando la impresión pasó de las plumas caligráficas a los grabados en cobre. Este cambio influyó en el aumento del contraste en los trazos y la estilización de los caracteres. Su estructura elegante y llamativa la hace ideal para titulares, editoriales y branding de lujo. Se ha convertido en una de las tipografías serif gratuitas más populares en plataformas como Google Fonts."
     },
@@ -197,7 +199,7 @@
       designer: "Adilson Pinho",
       description: " Plus Jakarta Sans, diseñada por Adilson Pinho, es una tipografía sans serif contemporánea que combina la simplicidad geométrica con toques humanistas. Su diseño limpio y bien equilibrado la hace altamente versátil, permitiendo su uso en una amplia variedad de aplicaciones, desde interfaces digitales hasta branding corporativo y material impreso.\n\nUna de sus principales fortalezas es su legibilidad, lo que la convierte en una opción ideal para."
     },
-    "Bona Nova": {
+    "Bona Nova SC": {
       designer: "Andrzej Heidrich",
       description: "Bona Nova SC es una variante de la tipografía Bona Nova, una elegante serif inspirada en el diseño clásico con un toque moderno. La versión SC (Small Caps) de Bona Nova está diseñada con versales pequeñas, lo que significa que todas sus letras mayúsculas están ajustadas en proporción para mantener una armonía visual sin diferencias drásticas de altura."
     },
@@ -232,7 +234,7 @@
       const fontStyle = window.getComputedStyle(box).getPropertyValue('font-family');
 
       // Fill modal content
-      document.getElementById('fontTitle').textContent = fontName;
+      document.getElementById('fontTitle').textContent = displayName;
       document.getElementById('fontInitials').textContent = initials;
 
       // Apply font style to preview elements only
