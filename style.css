@@ -26,7 +26,7 @@ button {
   font-size: 1.5rem;
   font-weight: bold;
   color: white;
-  background-color: #505444;
+  background-color: #6e7359;
   border: none;
   border-radius: 2rem; /* Rounded pill shape */
   cursor: pointer;
@@ -42,7 +42,7 @@ button:hover {
   display: flex;
   justify-content: space-between; /* Push logo left, nav right */
   align-items: center;
-  background-color: #46493d;
+  background-color: #6e7359;
   padding: 1rem 2rem;
   font-family: Arial, sans-serif;
   z-index: 2000; /* Ensures it's above the sidebar */
