@@ -134,7 +134,13 @@
   const sanserifGrid = document.getElementById('sanserif-grid');
   const modal = document.getElementById('fontModal');
   const closeModal = document.getElementById('closeModal');
-  const fontInfo = {
+
+  const fontKeyMap = {
+    "Garamond": "EB Garamond",
+    "Freight": "Freight Big Pro"
+  };
+
+    const fontInfo = {
     "Corben": {
       designer: "Ed Benguiat",
       description: "La tipografía Corben fue creada por Ed Benguiat, un reconocido diseñador de tipografías estadounidenses. Ed Benguiat es famoso por haber trabajado en una amplia gama de fuentes populares a lo largo de su carrera. Corben es una tipografía de estilo display con una estética retro y bold, que se lanzó en 1973 y rápidamente se convirtió en un clásico del diseño gráfico."
@@ -201,38 +207,74 @@
     }
   };
 
-  // This is what toggles the sideabar and makes it visible whenever "CT" is clicked
+  const clickableBoxes = document.querySelectorAll('.font-box');
+  clickableBoxes.forEach(box => {
+    box.addEventListener('click', () => {
+      const isActive = box.classList.contains('active-box');
+      const color = isActive ? '#882434' : '#505444';
+
+      // Change navbar and sidebar
+      document.querySelector('.navbar').style.backgroundColor = color;
+      document.querySelector('.sidebar').style.backgroundColor = color;
+
+      // Change all font boxes
+      document.querySelectorAll('.font-box').forEach(b => {
+        b.style.backgroundColor = color;
+      });
+
+      // Show modal
+      modal.classList.remove('hidden');
+
+      // Grab name/initials/font style
+      const fontName = box.querySelector('.font-name').textContent.trim();
+      const displayName = fontKeyMap[fontName] || fontName;
+      const initials = box.querySelector('.font-initials').textContent;
+      const fontStyle = window.getComputedStyle(box).getPropertyValue('font-family');
+
+      // Fill modal content
+      document.getElementById('fontTitle').textContent = fontName;
+      document.getElementById('fontInitials').textContent = initials;
+
+      // Apply font style to preview elements only
+      document.getElementById('fontInitials').style.fontFamily = fontStyle;
+      document.getElementById('fontTitle').style.fontFamily = fontStyle;
+
+      const info = fontInfo[displayName];
+      if (info) {
+        document.getElementById('fontDesigner').textContent = info.designer;
+        document.getElementById('fontDescription').textContent = info.description;
+      } else {
+        document.getElementById('fontDesigner').textContent = 'Diseñador Desconocido';
+        document.getElementById('fontDescription').textContent = 'Descripción pendiente para esta tipografía.';
+      }
+    });
+  });
+
+  // Close modal
+  closeModal.addEventListener('click', () => {
+    modal.classList.add('hidden');
+  });
+
+  // Toggle sidebar on logo click
   toggleButton.addEventListener('click', () => {
     sidebar.classList.toggle('active');
   });
 
-  // This is what handles the links being clicked
+  // Navigation link logic
   document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', (e) => {
-      // This prevents the link from refreshing the page
       e.preventDefault();
-      // This gets the text of the link
       const label = link.textContent.trim();
 
-      // Make sure both grids are hidden
       serifGrid.classList.add('hidden');
       sanserifGrid.classList.add('hidden');
 
-      // It reads the text that label contains to determine if the user clicked "Serif" or "San-Serif" and if it did, it shows the boxes
-       if (label === "Serif") {
+      if (label === "Serif") {
         serifGrid.classList.remove('hidden');
       } else if (label === "San-Serif") {
         sanserifGrid.classList.remove('hidden');
       }
-      // It hides thefont boxes on other nav links
-      else if (
-        label === "Home" ||
-        label === "Tips de uso" ||
-        label === "Sobre el Proyecto"
-      ) {
-        sanserifGrid.classList.add('hidden');
-        serifGrid.classList.add('hidden');
-      }
+
       document.querySelector('.navbar').style.backgroundColor = '#6e7359';
       document.querySelector('.sidebar').style.backgroundColor = '#6e7359';
       document.querySelectorAll('.font-box').forEach(b => {
@@ -240,48 +282,6 @@
       });
     });
   });
-
-  const clickableBoxes = document.querySelectorAll('.font-box');
-  
-  clickableBoxes.forEach(box => {
-  box.addEventListener('click', () => {
-    const isActive = box.classList.contains('active-box');
-    const color = isActive ? '#882434' : '#505444';
-    
-    // Change navbar and sidebar
-    document.querySelector('.navbar').style.backgroundColor = color;
-    document.querySelector('.sidebar').style.backgroundColor = color;
-    
-    // Change all font boxes
-    document.querySelectorAll('.font-box').forEach(b => {
-      b.style.backgroundColor = color;
-    });
-
-    // Show modal
-    modal.classList.remove('hidden');
-
-    // Update modal content
-    const fontName = box.querySelector('.font-name').textContent;
-    const initials = box.querySelector('.font-initials').textContent;
-    
-    document.getElementById('fontTitle').textContent = fontName;
-    document.getElementById('fontInitials').textContent = initials;
-
-    const info = fontInfo[fontName];
-
-    if (info) {
-      document.getElementById('fontDesigner').textContent = info.designer;
-      document.getElementById('fontDescription').textContent = info.description;
-    } else {
-      document.getElementById('fontDesigner').textContent = 'Diseñador Desconocido';
-      document.getElementById('fontDescription').textContent = 'Descripción pendiente para esta tipografía.';
-    }
-  });
-});
-
-closeModal.addEventListener('click', () => {
-  modal.classList.add('hidden');
-});  
 </script>
 </body>
 </html>
