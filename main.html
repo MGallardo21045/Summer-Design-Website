@@ -311,6 +311,21 @@
         sanserifGrid.classList.remove('hidden');
       }
     });
+
+    document.querySelectorAll('.sidebar a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const label = link.textContent.trim();
+        
+        // Reset all background classes
+        document.body.classList.remove('home-background', 'background-page', 'alt-background');
+        
+        // Apply background-page to sidebar options
+        if (["Catálogo Impreso", "Historia", "Contacto"].includes(label)) {
+          document.body.classList.add('background-page');
+        }
+      });
+    });
   });
 </script>
 </body>
