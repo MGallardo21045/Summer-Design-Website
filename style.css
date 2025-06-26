@@ -261,3 +261,12 @@ main {
 .hidden {
   display: none;
 }
+
+body.home-background main {
+  background: transparent;
+}
+
+.home-background {
+  background: url('images/Logo.png') no-repeat center center fixed;
+  background-size: cover;
+}

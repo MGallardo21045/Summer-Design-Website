@@ -128,6 +128,11 @@
 
 <!-- This is the JavaScript section that controls interactivity -->
 <script>
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("home") === "true") {
+    document.body.classList.add("home-background");
+  }
+  
   const toggleButton = document.getElementById('toggle-menu');
   const sidebar = document.getElementById('sidebar');
   const serifGrid = document.getElementById('serif-grid');
@@ -267,21 +272,33 @@
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const label = link.textContent.trim();
-
+      
+      // Remove font grids
       serifGrid.classList.add('hidden');
       sanserifGrid.classList.add('hidden');
-
-      if (label === "Serif") {
-        serifGrid.classList.remove('hidden');
-      } else if (label === "San-Serif") {
-        sanserifGrid.classList.remove('hidden');
-      }
-
+      
+      // Reset background color and font-box styles
       document.querySelector('.navbar').style.backgroundColor = '#6e7359';
       document.querySelector('.sidebar').style.backgroundColor = '#6e7359';
       document.querySelectorAll('.font-box').forEach(b => {
         b.style.backgroundColor = '#46493d';
       });
+      
+      // 👉 Clear home background on any nav click by default
+      document.body.classList.remove('home-background');
+      
+      // If Home is clicked, apply logo background
+      if (label === "Home") {
+        document.body.classList.add('home-background');
+      } else {
+        document.body.classList.remove('home-background');
+      }
+      
+      if (label === "Serif") {
+        serifGrid.classList.remove('hidden');
+      } else if (label === "San-Serif") {
+        sanserifGrid.classList.remove('hidden');
+      }
     });
   });
 </script>
