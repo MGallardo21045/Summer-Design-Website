@@ -294,10 +294,10 @@
         b.style.backgroundColor = '#46493d';
       });
       
-      // Reset all background classes
-      document.body.classList.remove('home-background', 'background-page');
-      
       // Set background depending on section
+      document.body.classList.remove('home-background', 'background-page', 'alt-background');
+      
+      // Handle backgrounds based on label
       if (label === "Home") {
         document.body.classList.add('home-background');
       } else if (["Serif", "San-Serif", "Sobre el Proyecto"].includes(label)) {
