@@ -219,15 +219,25 @@
     box.addEventListener('click', () => {
       const isActive = box.classList.contains('active-box');
       const color = isActive ? '#882434' : '#505444';
-
+      
       // Change navbar and sidebar
       document.querySelector('.navbar').style.backgroundColor = color;
       document.querySelector('.sidebar').style.backgroundColor = color;
-
+      
       // Change all font boxes
       document.querySelectorAll('.font-box').forEach(b => {
         b.style.backgroundColor = color;
       });
+    
+      // 🔁 Update background image
+      document.body.classList.remove('home-background', 'background-page', 'alt-background');
+      if (isActive) {
+        document.body.classList.remove('home-background', 'background-page', 'alt-background');
+        document.body.classList.add('alt-background');
+      } else {
+        document.body.classList.remove('home-background', 'alt-background');
+        document.body.classList.add('background-page');
+      }
 
       // Show modal
       modal.classList.remove('hidden');
@@ -273,27 +283,28 @@
       e.preventDefault();
       const label = link.textContent.trim();
       
-      // Remove font grids
+      // Hide both font grids initially
       serifGrid.classList.add('hidden');
       sanserifGrid.classList.add('hidden');
       
-      // Reset background color and font-box styles
+      // Reset styles
       document.querySelector('.navbar').style.backgroundColor = '#6e7359';
       document.querySelector('.sidebar').style.backgroundColor = '#6e7359';
       document.querySelectorAll('.font-box').forEach(b => {
         b.style.backgroundColor = '#46493d';
       });
       
-      // 👉 Clear home background on any nav click by default
-      document.body.classList.remove('home-background');
+      // Reset all background classes
+      document.body.classList.remove('home-background', 'background-page');
       
-      // If Home is clicked, apply logo background
+      // Set background depending on section
       if (label === "Home") {
         document.body.classList.add('home-background');
-      } else {
-        document.body.classList.remove('home-background');
+      } else if (["Serif", "San-Serif", "Sobre el Proyecto"].includes(label)) {
+        document.body.classList.add('background-page');
       }
       
+      // Show relevant content
       if (label === "Serif") {
         serifGrid.classList.remove('hidden');
       } else if (label === "San-Serif") {

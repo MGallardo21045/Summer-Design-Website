@@ -12,7 +12,7 @@ body, html {
 }
 
 .start-page {
-  background: url('images/Background.png') no-repeat center center fixed;
+  background: url('images/HomeBackground.png') no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -268,5 +268,15 @@ body.home-background main {
 
 .home-background {
   background: url('images/Logo.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.background-page {
+  background: url('images/Background.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.alt-background {
+  background: url('images/Alt Background.png') no-repeat center center fixed;
   background-size: cover;
 }
