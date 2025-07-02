@@ -108,18 +108,6 @@
     </div>
   </section>
   
-  <section id="catalogo-grid" class="catalogo-grid hidden">
-    <div class="catalog-box green-box">
-      <img src='images/Box 1.png' alt="Box 1" />
-    </div>
-    <div class="catalog-box red-box">
-      <img src='images/Box 2.png' alt="Box 2" />
-    </div>
-    <div class="catalog-box green-box">
-      <img src='images/Box 3.png' alt="Box 3" />
-    </div>
-  </section>
-  
   <div class="font-modal hidden" id="fontModal">
   <div class="font-modal-content">
     <span class="close-btn" id="closeModal">&times;</span>
@@ -323,27 +311,34 @@
         sanserifGrid.classList.remove('hidden');
       }
     });
-
+    
+    // Sidebar link logic for background reset and hiding font grids
     document.querySelectorAll('.sidebar a').forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const label = link.textContent.trim();
-        
-        // Hide all font grids
+    
+        // Hide font grids
         serifGrid.classList.add('hidden');
         sanserifGrid.classList.add('hidden');
-        document.getElementById("catalogo-grid").classList.add("hidden");
-        
+    
         // Reset all background classes
         document.body.classList.remove('home-background', 'background-page', 'alt-background');
     
-        // If one of these is clicked, show background and catalog boxes
+        // If it's one of the three sidebar links...
         if (["Catálogo Impreso", "Historia", "Contacto"].includes(label)) {
+          // ✅ Set background to Background.png
           document.body.classList.add('background-page');
-          
-          if (label === "Catálogo Impreso") {
-            document.getElementById("catalogo-grid").classList.remove("hidden");
-          }
+      
+          // ✅ Reset all colors to default green
+          document.querySelector('.navbar').style.backgroundColor = '#6e7359';
+          document.querySelector('.sidebar').style.backgroundColor = '#6e7359';
+          document.querySelectorAll('.font-box').forEach(b => {
+            b.style.backgroundColor = '#46493d';
+          });
+      
+          // ✅ Close sidebar
+          sidebar.classList.remove('active');
         }
       });
     });
