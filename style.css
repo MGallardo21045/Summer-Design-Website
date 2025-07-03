@@ -280,3 +280,67 @@ body.home-background main {
   background: url('images/Alt Background.png') no-repeat center center fixed;
   background-size: cover;
 }
+
+.tips-background {
+  background-image: url('images/Tips Background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#tips-section {
+  padding: 3rem 2rem;
+  font-family: sans-serif;
+}
+
+.tips-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.tips-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.tips-card {
+  background-color: rgba(255, 255, 255, 0.4); /* Slight transparency if needed */
+  padding: 1.5rem;
+  border-radius: 12px;
+  width: 300px;
+  max-width: 90vw;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.tips-initials {
+  font-size: 5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.tips-name {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.tips-card ul {
+  list-style-type: disc;
+  text-align: left;
+  padding-left: 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+body.tips-background {
+  overflow: hidden;
+}
+
+#tips-section,
+#tips-section h3,
+#tips-section li {
+  color: #717660;
+}
