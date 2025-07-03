@@ -195,32 +195,31 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Sidebar link logic for background reset and hiding font grids
     document.querySelectorAll('.sidebar a').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const label = link.textContent.trim();
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const label = link.textContent.trim();
     
-        // Hide font grids
-        serifGrid.classList.add('hidden');
-        sanserifGrid.classList.add('hidden');
+            // Hide font grids and Tips section
+            serifGrid.classList.add('hidden');
+            sanserifGrid.classList.add('hidden');
+            document.getElementById('tips-section').classList.add('hidden'); // <-- Add this line
+            
+            // Reset background classes
+            document.body.classList.remove('home-background', 'background-page', 'alt-background', 'tips-background');
     
-        // Reset all background classes
-        document.body.classList.remove('home-background', 'background-page', 'alt-background');
-    
-        // If it's one of the three sidebar links...
-        if (["Catálogo Impreso", "Historia", "Contacto"].includes(label)) {
-          // ✅ Set background to Background.png
-          document.body.classList.add('background-page');
-      
-          // ✅ Reset all colors to default green
-          document.querySelector('.navbar').style.backgroundColor = '#6e7359';
-          document.querySelector('.sidebar').style.backgroundColor = '#6e7359';
-          document.querySelectorAll('.font-box').forEach(b => {
-            b.style.backgroundColor = '#46493d';
-          });
-      
-          // ✅ Close sidebar
-          sidebar.classList.remove('active');
-        }
+            if (["Catálogo Impreso", "Historia", "Contacto"].includes(label)) {
+                document.body.classList.add('background-page');
+                
+                // Reset styles to green
+                document.querySelector('.navbar').style.backgroundColor = '#6e7359';
+                document.querySelector('.sidebar').style.backgroundColor = '#6e7359';
+                document.querySelectorAll('.font-box').forEach(b => {
+                    b.style.backgroundColor = '#46493d';
+                });
+                
+                // Close the sidebar
+                sidebar.classList.remove('active');
+            }
+        });
     });
-});
 });
