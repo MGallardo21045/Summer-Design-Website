@@ -138,6 +138,12 @@ main {
   justify-content: center;
 }
 
+body.background-page main {
+  align-items: flex-start;   /* push everything to the top */
+  justify-content: center;   /* center everything horizontally */
+  padding-top: 1rem;         /* space below the navbar */
+}
+
 /* Grid layout for the 8 font boxes */
 .grid {
   height: 100%;
@@ -344,3 +350,57 @@ body.tips-background {
 #tips-section li {
   color: #717660;
 }
+
+.proyecto-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 2rem 4rem;
+  color: #fff;
+}
+
+.proyecto-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: nowrap; /* Force side-by-side on wide screens */
+}
+
+@media (max-width: 900px) {
+  .proyecto-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .proyecto-row.reverse {
+    flex-direction: column;
+  }
+
+  .proyecto-img,
+  .proyecto-text {
+    width: 90%;
+  }
+}
+
+.proyecto-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.proyecto-img {
+  width: 40%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.proyecto-text {
+  width: 45%;
+  max-width: 600px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #ffffff;
+}
+

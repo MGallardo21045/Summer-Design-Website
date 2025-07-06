@@ -1,176 +1,189 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Catálogo Tipográfico</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Bona+Nova&family=Corben&family=DM+Sans&family=Lora&family=Manrope&family=Montserrat&family=Outfit&family=Playfair+Display&family=Poppins&family=Plus+Jakarta+Sans&family=Quicksand&family=Sora&display=swap" rel="stylesheet">
-</head>
-<body>
-  <!-- This is the navigation bar at the top -->
-  <header class="navbar">
-    <!-- This is a logo that also acts as a toggle button for another sidebar on the left -->
-    <div class="logo" id="toggle-menu">CT</div>
-    <nav>
-      <ul>
-        <!-- The main navigation links for the sidebar -->
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Serif</a></li>
-        <li><a href="#">San-Serif</a></li>
-        <li><a href="#">Tips de uso</a></li>
-        <li><a href="#">Sobre el Proyecto</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- The hidden sidebar menu that appears when "CT" is clicked. Aside is great for this -->
-  <aside class="sidebar" id="sidebar">
-    <ul>
-      <li><a href="#">Catálogo Impreso</a></li>
-      <li><a href="#">Historia</a></li>
-      <li><a href="#">Contacto</a></li>
-    </ul>
-  </aside>
-
-  <main>
-    <!-- This grid holds 8 hidden green font boxes that appear when Serif or San-Serif is clicked -->
-    <!-- The ones labeled selectable also change color when clicked -->
-    <!-- This is exclusive for the Serif font boxes -->
-  <section id="serif-grid" class="grid hidden">
-    <div class="font-box" style="font-family: 'Corben', serif;">
-      <div class="font-initials">Co</div>
-      <div class="font-name">Corben</div>
-    </div>
-    <div class="font-box active-box" style="font-family: 'Reforma', serif;">
-      <div class="font-initials">Rf</div>
-      <div class="font-name">Reforma</div>
-    </div>
-    <div class="font-box" style="font-family: 'Playfair Display', serif;">
-      <div class="font-initials">Pd</div>
-      <div class="font-name">Playfair</div>
-    </div>
-    <div class="font-box active-box" style="font-family: 'Tiempos', serif;">
-      <div class="font-initials">Tp</div>
-      <div class="font-name">Tiempos</div>
-    </div>
-    <div class="font-box" style="font-family: 'Lora', serif;">
-      <div class="font-initials">La</div>
-      <div class="font-name">Lora</div>
-    </div>
-    <div class="font-box active-box" style="font-family: 'Garamond', serif;">
-      <div class="font-initials">Gd</div>
-      <div class="font-name">Garamond</div>
-    </div>
-    <div class="font-box" style="font-family: 'Freight', serif;">
-      <div class="font-initials">Bf</div>
-      <div class="font-name">Freight</div>
-    </div>
-    <div class="font-box active-box" style="font-family: 'Bona Nova', serif;">
-      <div class="font-initials">Nb</div>
-      <div class="font-name">Bona Nova</div>
-    </div>
-  </section>
-
-  <!-- And this one is exclusive for the Sans-Serif Fonts -->
-  <section id="sanserif-grid" class="grid hidden">
-    <div class="font-box" style="font-family: 'Montserrat', sans-serif;">
-      <div class="font-initials">Mt</div>
-      <div class="font-name">Montserrat</div>
-    </div>
-    <div class="font-box active-box" style="font-family: 'DM Sans', sans-serif;">
-      <div class="font-initials">Dm</div>
-      <div class="font-name">Dm Sans</div>
-    </div>
-    <div class="font-box" style="font-family: 'Outfit', sans-serif;">
-      <div class="font-initials">Ot</div>
-      <div class="font-name">Outfit</div>
-    </div>
-    <div class="font-box active-box" style="font-family: 'Quicksand', sans-serif;">
-      <div class="font-initials">Qk</div>
-      <div class="font-name">Quicksand</div>
-    </div>
-    <div class="font-box" style="font-family: 'Manrope', sans-serif;">
-      <div class="font-initials">Mr</div>
-      <div class="font-name">Manrope</div>
-    </div>
-    <div class="font-box active-box" style="font-family: 'Poppins', sans-serif;">
-      <div class="font-initials">Pp</div>
-      <div class="font-name">Poppins</div>
-    </div>
-    <div class="font-box" style="font-family: 'Plus Jakarta Sans', sans-serif;">
-      <div class="font-initials">Pk</div>
-      <div class="font-name">Plus Jakarta</div>
-    </div>
-    <div class="font-box active-box" style="font-family: 'Sora', sans-serif;">
-      <div class="font-initials">Sa</div>
-      <div class="font-name">Sora</div>
-    </div>
-  </section>
-
-  <section id="tips-section" class="hidden tips-layout">
-    <h2 class="tips-title">Aplicaciones sugeridas</h2>
-    
-    <div class="tips-grid">
-      <!-- Box 1 -->
-      <div class="tips-card">
-        <div class="tips-initials" style="font-family: 'Manrope', sans-serif;">Mr</div>
-        <h3 class="tips-name">Manrope</h3>
-        <ul>
-          <li>Diseñada para lectura en pantallas, clara y neutra.</li>
-          <li>Buena para subtítulos, UI/UX y contenido informativo.</li>
-          <li>Comunica estabilidad, confianza y accesibilidad.</li>
-          <li>Aporta un aire contemporáneo sin ser invasiva o dominante.</li>
-          <li>Funciona bien en proyectos tecnológicos, educativos o administrativos.</li>
-        </ul>
-      </div>
-      
-      <!-- Box 2 -->
-      <div class="tips-card">
-        <div class="tips-initials" style="font-family: 'Outfit', sans-serif;">Ot</div>
-        <h3 class="tips-name">Outfit</h3>
-        <ul>
-          <li>Perfecta para interfaces limpias y modernas.</li>
-          <li>Minimalista y versátil, se adapta a textos digitales.</li>
-          <li>Útil en apps, sitios web o presentaciones corporativas.</li>
-          <li>Legible en tamaños pequeños, ideal para navegación o etiquetas.</li>
-          <li>Combina fácilmente con serifas si se quiere jerarquía equilibrada.</li>
-        </ul>
-      </div>
-      
-      <!-- Box 3 -->
-      <div class="tips-card">
-        <div class="tips-initials" style="font-family: 'Playfair Display', serif;">Pd</div>
-        <h3 class="tips-name">Playfair Display</h3>
-        <ul>
-          <li>Ideal para encabezados elegantes o editoriales.</li>
-          <li>Transmite sofisticación, tradición y seriedad.</li>
-          <li>Funciona bien en marcas de moda, portadas de libros o sitios culturales.</li>
-          <li>Crea contraste visual atractivo cuando se combina con sans serif limpias.</li>
-          <li>Aporta un toque clásico en proyectos que necesitan autoridad y presencia.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Catálogo Tipográfico</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Bona+Nova&family=Corben&family=DM+Sans&family=Lora&family=Manrope&family=Montserrat&family=Outfit&family=Playfair+Display&family=Poppins&family=Plus+Jakarta+Sans&family=Quicksand&family=Sora&display=swap"
+    rel="stylesheet"
+    >
+    <!-- Load your script with defer so the DOM is ready when it runs -->
+    <script defer src="script.js"></script>
+  </head>
   
-  <div class="font-modal hidden" id="fontModal">
-  <div class="font-modal-content">
-    <span class="close-btn" id="closeModal">&times;</span>
-    <div class="modal-text">
-      <h2 id="fontTitle"></h2>
-      <h4 id="fontDesigner"></h4>
-      <p id="fontDescription">
-      </p>
-    </div>
-    <div class="modal-preview">
-      <div id="fontInitials"></div>
-      <p><br><strong></strong></p>
-      <p class="alphabet">ABCDEFGHIJKLMNÑ<br>OPQRSTUVWXYY<br>abcdefghijklmnñ<br>opqrstuvwxyz</p>
-    </div>
-  </div>
-</div>
-</main>
-
-<script src="script.js"></script>
-</body>
+  <body>
+    <header class="navbar">
+      <div class="logo" id="toggle-menu">CT</div>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Serif</a></li>
+          <li><a href="#">San-Serif</a></li>
+          <li><a href="#">Tips de uso</a></li>
+          <li><a href="#">Sobre el Proyecto</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <aside class="sidebar" id="sidebar">
+      <ul>
+        <li><a href="#">Catálogo Impreso</a></li>
+        <li><a href="#">Historia</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </aside>
+    
+    <main>
+      <section id="serif-grid" class="grid hidden">
+        <div class="font-box" style="font-family: 'Corben', serif;">
+          <div class="font-initials">Co</div>
+          <div class="font-name">Corben</div>
+        </div>
+        <div class="font-box active-box" style="font-family: 'Reforma', serif;">
+          <div class="font-initials">Rf</div>
+          <div class="font-name">Reforma</div>
+        </div>
+        <div class="font-box" style="font-family: 'Playfair Display', serif;">
+          <div class="font-initials">Pd</div>
+          <div class="font-name">Playfair</div>
+        </div>
+        <div class="font-box active-box" style="font-family: 'Tiempos', serif;">
+          <div class="font-initials">Tp</div>
+          <div class="font-name">Tiempos</div>
+        </div>
+        <div class="font-box" style="font-family: 'Lora', serif;">
+          <div class="font-initials">La</div>
+          <div class="font-name">Lora</div>
+        </div>
+        <div class="font-box active-box" style="font-family: 'Garamond', serif;">
+          <div class="font-initials">Gd</div>
+          <div class="font-name">Garamond</div>
+        </div>
+        <div class="font-box" style="font-family: 'Freight', serif;">
+          <div class="font-initials">Bf</div>
+          <div class="font-name">Freight</div>
+        </div>
+        <div class="font-box active-box" style="font-family: 'Bona Nova', serif;">
+          <div class="font-initials">Nb</div>
+          <div class="font-name">Bona Nova</div>
+        </div>
+      </section>
+      
+      <section id="sanserif-grid" class="grid hidden">
+        <div class="font-box" style="font-family: 'Montserrat', sans-serif;">
+          <div class="font-initials">Mt</div>
+          <div class="font-name">Montserrat</div>
+        </div>
+        <div class="font-box active-box" style="font-family: 'DM Sans', sans-serif;">
+          <div class="font-initials">Dm</div>
+          <div class="font-name">Dm Sans</div>
+        </div>
+        <div class="font-box" style="font-family: 'Outfit', sans-serif;">
+          <div class="font-initials">Ot</div>
+          <div class="font-name">Outfit</div>
+        </div>
+        <div class="font-box active-box" style="font-family: 'Quicksand', sans-serif;">
+          <div class="font-initials">Qk</div>
+          <div class="font-name">Quicksand</div>
+        </div>
+        <div class="font-box" style="font-family: 'Manrope', sans-serif;">
+          <div class="font-initials">Mr</div>
+          <div class="font-name">Manrope</div>
+        </div>
+        <div class="font-box active-box" style="font-family: 'Poppins', sans-serif;">
+          <div class="font-initials">Pp</div>
+          <div class="font-name">Poppins</div>
+        </div>
+        <div class="font-box" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+          <div class="font-initials">Pk</div>
+          <div class="font-name">Plus Jakarta</div>
+        </div>
+        <div class="font-box active-box" style="font-family: 'Sora', sans-serif;">
+          <div class="font-initials">Sa</div>
+          <div class="font-name">Sora</div>
+        </div>
+      </section>
+      
+      <section id="tips-section" class="hidden tips-layout">
+        <h2 class="tips-title">Aplicaciones sugeridas</h2>
+        
+        <div class="tips-grid">
+          <!-- Box 1 -->
+          <div class="tips-card">
+            <div class="tips-initials" style="font-family: 'Manrope', sans-serif;">Mr</div>
+            <h3 class="tips-name">Manrope</h3>
+            <ul>
+              <li>Diseñada para lectura en pantallas, clara y neutra.</li>
+              <li>Buena para subtítulos, UI/UX y contenido informativo.</li>
+              <li>Comunica estabilidad, confianza y accesibilidad.</li>
+              <li>Aporta un aire contemporáneo sin ser invasiva o dominante.</li>
+              <li>Funciona bien en proyectos tecnológicos, educativos o administrativos.</li>
+            </ul>
+          </div>
+          
+          <!-- Box 2 -->
+          <div class="tips-card">
+            <div class="tips-initials" style="font-family: 'Outfit', sans-serif;">Ot</div>
+            <h3 class="tips-name">Outfit</h3>
+            <ul>
+              <li>Perfecta para interfaces limpias y modernas.</li>
+              <li>Minimalista y versátil, se adapta a textos digitales.</li>
+              <li>Útil en apps, sitios web o presentaciones corporativas.</li>
+              <li>Legible en tamaños pequeños, ideal para navegación o etiquetas.</li>
+              <li>Combina fácilmente con serifas si se quiere jerarquía equilibrada.</li>
+            </ul>
+          </div>
+          
+          <!-- Box 3 -->
+          <div class="tips-card">
+            <div class="tips-initials" style="font-family: 'Playfair Display', serif;">Pd</div>
+            <h3 class="tips-name">Playfair Display</h3>
+            <ul>
+              <li>Ideal para encabezados elegantes o editoriales.</li>
+              <li>Transmite sofisticación, tradición y seriedad.</li>
+              <li>Funciona bien en marcas de moda, portadas de libros o sitios culturales.</li>
+              <li>Crea contraste visual atractivo cuando se combina con sans serif limpias.</li>
+              <li>Aporta un toque clásico en proyectos que necesitan autoridad y presencia.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      
+      <section id="proyecto-section" class="hidden proyecto-layout">
+        <!-- first row: image then text -->
+        <div class="proyecto-row">
+          <img src="images/Book.png" alt="Catálogo Tipográfico" class="proyecto-img" />
+          <p class="proyecto-text">
+            Este proyecto surge como un ejercicio de exploración y organización tipográfica. A través de un catálogo impreso —empastado de forma manual— reunimos distintas entes, variables y estilos, acompañados por textos muestra basados en sonetos. La intención fue generar una experiencia editorial cuidada desde la selección hasta la disposición del contenido.
+          </p>
+        </div>
+        
+        <!-- second row: text then image -->
+        <div class="proyecto-row">
+          <p class="proyecto-text">
+            Paralelamente, desarrollamos una interfaz web donde esta misma información se adapta al entorno digital. Este tipo de catálogos son fundamentales para comprender la diversidad, ncionalidad y expresividad de la tipografía en contextos tanto gráficos como interactivos.
+          </p>
+          <img src="images/Book2.png" alt="Interior del Catálogo" class="proyecto-img" />
+        </div>
+      </section>
+      
+      <div class="font-modal hidden" id="fontModal">
+        <div class="font-modal-content">
+          <span class="close-btn" id="closeModal">&times;</span>
+          <div class="modal-text">
+            <h2 id="fontTitle"></h2>
+            <h4 id="fontDesigner"></h4>
+            <p id="fontDescription"></p>
+          </div>
+          <div class="modal-preview">
+            <div id="fontInitials"></div>
+            <p><br><strong></strong></p>
+            <p class="alphabet">ABCDEFGHIJKLMNÑ<br>OPQRSTUVWXYY<br>abcdefghijklmnñ<br>opqrstuvwxyz</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>

@@ -1,21 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("home") === "true") {
-        document.body.classList.add("home-background");
-    }
-  
-    const toggleButton = document.getElementById('toggle-menu');
-    const sidebar = document.getElementById('sidebar');
-    const serifGrid = document.getElementById('serif-grid');
-    const sanserifGrid = document.getElementById('sanserif-grid');
-    const modal = document.getElementById('fontModal');
-    const closeModal = document.getElementById('closeModal');
-  
+    const body            = document.body;
+    const navbar          = document.querySelector(".navbar");
+    const sidebar         = document.getElementById("sidebar");
+    const serifGrid       = document.getElementById("serif-grid");
+    const sanserifGrid    = document.getElementById("sanserif-grid");
+    const tipsSection     = document.getElementById("tips-section");
+    const proyectoSection = document.getElementById("proyecto-section");
+    const modal           = document.getElementById("fontModal");
+    const closeModalBtn   = document.getElementById("closeModal");
+    
+    const fontBoxes = Array.from(document.querySelectorAll(".font-box"));
+    const navLinks  = Array.from(document.querySelectorAll("nav a"));
+    const sideLinks = Array.from(document.querySelectorAll(".sidebar a"));
+    
     const fontKeyMap = {
-        "Garamond": "EB Garamond",
-        "Freight": "Freight Big Pro",
-        "Playfair": "Playfair Display",
-        "Bona Nova": "Bona Nova SC"
+        Garamond:   "EB Garamond",
+        Freight:    "Freight Big Pro",
+        Playfair:   "Playfair Display", "Bona Nova": "Bona Nova SC",
     };
     
     const fontInfo = {
@@ -84,141 +85,105 @@ document.addEventListener("DOMContentLoaded", () => {
         description: " Sora es una tipografía sans serif diseñada por Kiwari Studio, concebida con un enfoque moderno y una clara prioridad en la legibilidad. Su estilo limpio y estructurado, con líneas rectas y proporciones equilibradas, le otorgan un carácter sofisticado y altamente funcional, ideal para entornos digitales y branding contemporáneo."
         }
     };
-  
-    const clickableBoxes = document.querySelectorAll('.font-box');
-    clickableBoxes.forEach(box => {
-        box.addEventListener('click', () => {
-            const isActive = box.classList.contains('active-box');
-            const color = isActive ? '#882434' : '#505444';
-      
-            // Change navbar and sidebar
-            document.querySelector('.navbar').style.backgroundColor = color;
-            document.querySelector('.sidebar').style.backgroundColor = color;
+    
+    function resetColors() {
+        navbar.style.backgroundColor  = "#6e7359";
+        sidebar.style.backgroundColor = "#6e7359";
+        fontBoxes.forEach(b => b.style.backgroundColor = "#46493d");
+    }
+    
+    function hideAllSections() {
+        serifGrid.classList.add("hidden");
+        sanserifGrid.classList.add("hidden");
+        tipsSection.classList.add("hidden");
+        proyectoSection.classList.add("hidden");
+    }
+    
+    function clearBackgrounds() {
+        body.classList.remove("home-background", "background-page", "alt-background", "tips-background");
+    }
+    
+    if (new URLSearchParams(location.search).get("home") === "true") {
+        body.classList.add("home-background");
+    }
+    
+    fontBoxes.forEach(box => {
+        box.addEventListener("click", () => {
+            const isActive = box.classList.contains("active-box");
+            const color    = isActive ? "#882434" : "#505444";
             
-            // Change all font boxes
-            document.querySelectorAll('.font-box').forEach(b => {
-                b.style.backgroundColor = color;
-            });
-      
-            // 🔁 Update background image
-            document.body.classList.remove('home-background', 'background-page', 'alt-background');
-            if (isActive) {
-                document.body.classList.remove('home-background', 'background-page', 'alt-background');
-                document.body.classList.add('alt-background');
-            } else {
-                document.body.classList.remove('home-background', 'alt-background');
-                document.body.classList.add('background-page');
-            }
-      
-            // Show modal
-            modal.classList.remove('hidden');
-      
-            // Grab name/initials/font style
-            const fontName = box.querySelector('.font-name').textContent.trim();
+            navbar.style.backgroundColor  = color;
+            sidebar.style.backgroundColor = color;
+            fontBoxes.forEach(b => b.style.backgroundColor = color);
+            
+            clearBackgrounds();
+            body.classList.add(isActive ? "alt-background" : "background-page");
+            
+            modal.classList.remove("hidden");
+            
+            const fontName    = box.querySelector(".font-name").textContent.trim();
             const displayName = fontKeyMap[fontName] || fontName;
-            const initials = box.querySelector('.font-initials').textContent;
-            const fontStyle = window.getComputedStyle(box).getPropertyValue('font-family');
-      
-            // Fill modal content
-            document.getElementById('fontTitle').textContent = displayName;
-            document.getElementById('fontInitials').textContent = initials;
-
-            // Apply font style to preview elements only
-            document.getElementById('fontInitials').style.fontFamily = fontStyle;
-            document.getElementById('fontTitle').style.fontFamily = fontStyle;
-      
-            const info = fontInfo[displayName];
-            if (info) {
-                document.getElementById('fontDesigner').textContent = info.designer;
-                document.getElementById('fontDescription').textContent = info.description;
-            } else {
-                document.getElementById('fontDesigner').textContent = 'Diseñador Desconocido';
-                document.getElementById('fontDescription').textContent = 'Descripción pendiente para esta tipografía.';
-            }
-        });
-    });
-  
-    // Close modal
-    closeModal.addEventListener('click', () => {
-        modal.classList.add('hidden');
-    });
-  
-    // Toggle sidebar on logo click
-    toggleButton.addEventListener('click', () => {
-        sidebar.classList.toggle('active');
-    });
-    
-    // Navigation link logic
-    document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const label = link.textContent.trim();
-        
-            // Hide both font grids initially
-            serifGrid.classList.add('hidden');
-            sanserifGrid.classList.add('hidden');
-    
-            // Reset styles
-            document.querySelector('.navbar').style.backgroundColor = '#6e7359';
-            document.querySelector('.sidebar').style.backgroundColor = '#6e7359';
-            document.querySelectorAll('.font-box').forEach(b => {
-                b.style.backgroundColor = '#46493d';
-            });
-    
-            // Reset all backgrounds
-            document.body.classList.remove('home-background', 'background-page', 'alt-background', 'tips-background');
-        
-            // ✅ Set background based on clicked label
-            if (label === "Home") {
-                document.body.classList.add('home-background');
-            } else if (["Serif", "San-Serif", "Sobre el Proyecto"].includes(label)) {
-                document.body.classList.add('background-page');
-            } else if (label === "Tips de uso") {
-                document.body.classList.add('tips-background');
-            }
-        
-            // Show relevant grids
-            if (label === "Serif") {
-                serifGrid.classList.remove('hidden');
-            } else if (label === "San-Serif") {
-                sanserifGrid.classList.remove('hidden');
-            }
-
-            if (label === "Tips de uso") {
-                document.body.classList.add('tips-background');
-                document.getElementById('tips-section').classList.remove('hidden');
-            } else {
-                document.getElementById('tips-section').classList.add('hidden');
-            }
-        });
-    });
-    
-    // Sidebar link logic for background reset and hiding font grids
-    document.querySelectorAll('.sidebar a').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const label = link.textContent.trim();
-    
-            // Hide font grids and Tips section
-            serifGrid.classList.add('hidden');
-            sanserifGrid.classList.add('hidden');
-            document.getElementById('tips-section').classList.add('hidden'); // <-- Add this line
+            const initials    = box.querySelector(".font-initials").textContent;
+            const fontFamily  = getComputedStyle(box).fontFamily;
             
-            // Reset background classes
-            document.body.classList.remove('home-background', 'background-page', 'alt-background', 'tips-background');
+            document.getElementById("fontTitle").textContent    = displayName;
+            document.getElementById("fontInitials").textContent = initials;
+            document.getElementById("fontTitle").style.fontFamily    = fontFamily;
+            document.getElementById("fontInitials").style.fontFamily = fontFamily;
+            
+            const info = fontInfo[displayName] || {};
+            document.getElementById("fontDesigner").textContent   = info.designer   || "Diseñador Desconocido";
+            document.getElementById("fontDescription").textContent = info.description || "Descripción pendiente para esta tipografía.";
+        });
+    });
     
+    closeModalBtn.addEventListener("click", () => {
+        modal.classList.add("hidden");
+    });
+    
+    document.getElementById("toggle-menu").addEventListener("click", () => {
+        sidebar.classList.toggle("active");
+    });
+    
+    navLinks.forEach(link => {
+        link.addEventListener("click", e => {
+            e.preventDefault();
+            const label = link.textContent.trim();
+            
+            resetColors();
+            hideAllSections();
+            clearBackgrounds();
+            
+            if (label === "Home") {
+                body.classList.add("home-background");
+            } else if (label === "Serif") {
+                serifGrid.classList.remove("hidden");
+                body.classList.add("background-page");
+            } else if (label === "San-Serif") {
+                sanserifGrid.classList.remove("hidden");
+                body.classList.add("background-page");
+            } else if (label === "Tips de uso") {
+                tipsSection.classList.remove("hidden");
+                body.classList.add("tips-background");
+            } else if (label === "Sobre el Proyecto") {
+                proyectoSection.classList.remove("hidden");
+                body.classList.add("background-page");
+            }
+        });
+    });
+    
+    sideLinks.forEach(link => {
+        link.addEventListener("click", e => {
+            e.preventDefault();
+            const label = link.textContent.trim();
+            
+            resetColors();
+            hideAllSections();
+            clearBackgrounds();
+            
             if (["Catálogo Impreso", "Historia", "Contacto"].includes(label)) {
-                document.body.classList.add('background-page');
-                
-                // Reset styles to green
-                document.querySelector('.navbar').style.backgroundColor = '#6e7359';
-                document.querySelector('.sidebar').style.backgroundColor = '#6e7359';
-                document.querySelectorAll('.font-box').forEach(b => {
-                    b.style.backgroundColor = '#46493d';
-                });
-                
-                // Close the sidebar
-                sidebar.classList.remove('active');
+                body.classList.add("background-page");
+                sidebar.classList.remove("active");
             }
         });
     });
