@@ -360,18 +360,10 @@ body.tips-background {
     text-align: center;
   }
 
-  .proyecto-row.reverse {
-    flex-direction: column;
-  }
-
   .proyecto-img,
   .proyecto-text {
     width: 90%;
   }
-}
-
-.proyecto-row.reverse {
-  flex-direction: row-reverse;
 }
 
 .proyecto-img {
@@ -418,4 +410,48 @@ body.tips-background {
 
 .catalogo-card.red {
   background-color: #762f3c;
+}
+
+.contacto-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 70px);
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.contacto-row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: nowrap;
+}
+
+.contacto-img {
+  flex-shrink: 0;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.contacto-text {
+  max-width: 600px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #adb49e;
+}
+
+@media (max-width: 900px) {
+  .contacto-row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contacto-img,
+  .contacto-text {
+    width: 90%;
+  }
 }
