@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const fontBoxes = Array.from(document.querySelectorAll(".font-box"));
     const navLinks  = Array.from(document.querySelectorAll("nav a"));
     const sideLinks = Array.from(document.querySelectorAll(".sidebar a"));
+    const catalogoSection = document.getElementById("catalogo-section");
+
     
     const fontKeyMap = {
         Garamond:   "EB Garamond",
@@ -97,6 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
         sanserifGrid.classList.add("hidden");
         tipsSection.classList.add("hidden");
         proyectoSection.classList.add("hidden");
+        catalogoSection.classList.add("hidden");
     }
     
     function clearBackgrounds() {
@@ -181,9 +184,15 @@ document.addEventListener("DOMContentLoaded", () => {
             hideAllSections();
             clearBackgrounds();
             
+            // only for those three you already handle...
             if (["Catálogo Impreso", "Historia", "Contacto"].includes(label)) {
                 body.classList.add("background-page");
                 sidebar.classList.remove("active");
+                
+                // but *also* show our new catalogo cards, only on “Catálogo Impreso”
+                if (label === "Catálogo Impreso") {
+                    catalogoSection.classList.remove("hidden");
+                }
             }
         });
     });
