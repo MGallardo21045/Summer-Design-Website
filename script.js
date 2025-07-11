@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeModalBtn   = document.getElementById("closeModal");
     const catalogoSection = document.getElementById("catalogo-section");
     const contactoSection = document.getElementById("contacto-section");
+    const historiaSection = document.getElementById("historia-section");
     
     const fontBoxes = Array.from(document.querySelectorAll(".font-box"));
     const navLinks  = Array.from(document.querySelectorAll("nav a"));
@@ -101,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
         proyectoSection.classList.add("hidden");
         catalogoSection.classList.add("hidden");
         contactoSection.classList.add("hidden");
+        historiaSection.classList.add("hidden");
     }
     
     function clearBackgrounds() {
@@ -191,6 +193,10 @@ document.addEventListener("DOMContentLoaded", () => {
             
                 if (label === "Catálogo Impreso") {
                     catalogoSection.classList.remove("hidden");
+                }
+                if (label === "Historia") {
+                    historiaSection.classList.remove("hidden");
+                    document.body.classList.add("background-page", "historia-background");
                 }
                 if (label === "Contacto") {
                     contactoSection.classList.remove("hidden");

@@ -455,3 +455,53 @@ body.tips-background {
     width: 90%;
   }
 }
+
+.historia-layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 2rem 4rem;
+  height: calc(100vh - 70px);
+  overflow: hidden;
+}
+
+.historia-text {
+  flex: 1;
+  max-width: 50%;
+  color: #f0f0d8;
+  line-height: 1.6;
+}
+
+.historia-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.historia-text h3 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  font-weight: normal;
+}
+
+.historia-letters {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.big-letter {
+  font-size: 20rem;
+  line-height: 1;
+  color: #46493d;
+}
+
+.small-letter {
+  font-size: 14rem;
+  line-height: 1;
+  color: #e6e6c8;
+}
+
+body.historia-background {
+  overflow: hidden;
+}
